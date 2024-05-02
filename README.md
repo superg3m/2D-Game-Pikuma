@@ -1,4 +1,7 @@
 - SDL: https://github.com/libsdl-org/SDL
+
+## Taskfile Info
+- Taskfile Usage: https://taskfile.dev/usage/
 - Taskfile Installation Guide: https://taskfile.dev/installation/
 
 ### Installing on Windows
@@ -10,3 +13,5 @@
 
 ### Installing on MacOS
 - brew install go-task
+
+Maybe use vcpkg or have a script that just git clones it
