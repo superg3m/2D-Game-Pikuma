@@ -1,0 +1,48 @@
+version: '3'
+
+includes:
+  utils:
+    taskfile: ./scripts/Taskfile_{{OS}}_utils.yml
+    internal: true
+
+tasks:
+  get:
+    cmds:
+      - task: utils:get
+
+  generate:
+    cmds:
+      - task: utils:generate
+
+  install-resources:
+    cmds:
+      - '{{if eq OS "windows"}}powershell -Command "Remove-Item -Path dist/bin/resources -Recurse -Force"{{else}}rm -rf dist/bin/resources{{end}}'
+      - '{{if eq OS "windows"}}powershell -Command "Copy-Item -Path resources -Destination dist/bin/ -Recurse -Force"{{else}}cp resources dist/bin/{{end}}'
+
+  init:
+    cmds:
+      - task: utils:init
+
+  build:
+    cmds:
+      - task: utils:build
+
+  clean:
+    cmds:
+      - task: utils:clean
+
+  clean-dependencies:
+    cmds:
+      - task: utils:clean-dependencies
+
+  create-files:
+    cmds:
+      - task: utils:create-files
+
+  delete-files:
+    cmds:
+      - task: utils:delete-files
+
+  create-resource:
+    cmds:
+      - task: utils:create-resource
